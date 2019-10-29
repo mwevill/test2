@@ -1,0 +1,102 @@
+{
+	"Databases": [{
+		"DatabaseName": "__CosmosDatabase__",
+		"Collections": [{
+			"CollectionName": "__CosmosCollectionName__",
+			"OfferThroughput": __ThroughPut__,
+			"StoredProcedures": [],
+			"IndexingPolicy": {
+				"indexingMode": "consistent",
+				"includedPaths": [{
+					"path": "/*",
+					"indexes": [{
+						"kind": "Range",
+						"dataType": "Number",
+						"precision": -1
+					},
+					{
+						"kind": "Hash",
+						"dataType": "String",
+						"precision": 3
+					}]
+				},
+				{
+					"path": "/messageId/?",
+					"indexes": [{
+						"kind": "Range",
+						"dataType": "String",
+						"precision": 40
+					},
+					{
+						"kind": "Range",
+						"dataType": "Number",
+						"precision": -1
+					}]
+				}]
+			}
+		}]
+	}]
+}
+
+
+
+
+{"path": "/*", "indexes": [{"kind": "Range","dataType": "Number","precision": -1},{"kind": "Hash","dataType": "String","precision": 3}]},{"path": "/messageId/?","indexes": [{"kind": "Range","dataType": "String","precision": 40},{"kind": "Range","dataType": "Number","precision": -1}]}
+
+
+
+
+[
+    {
+        "CollectionName": "vacancies",
+        "OfferThroughput": 400
+    },
+    {
+        "CollectionName": "queryStore",
+        "OfferThroughput": 1000
+    },
+    {
+        "CollectionName": "referenceData",
+        "OfferThroughput": 400
+    },
+    {
+        "CollectionName": "sequences",
+        "OfferThroughput": 400
+    },
+    {
+        "CollectionName": "users",
+        "OfferThroughput": 400
+    },
+    {
+        "CollectionName": "applicationReviews",
+        "OfferThroughput": 400
+    },
+    {
+        "CollectionName": "configuration",
+        "OfferThroughput": 400
+    },
+    {
+        "CollectionName": "vacancyReviews",
+        "OfferThroughput": 400
+    },
+    {
+        "CollectionName": "employerProfiles",
+        "OfferThroughput": 400
+    },
+    {
+        "CollectionName": "reports",
+        "OfferThroughput": 400
+    },
+    {
+        "CollectionName": "userNotificationPreferences",
+        "OfferThroughput": 400
+    },
+    {
+        "CollectionName": "communicationMessages",
+        "OfferThroughput": 400
+    },
+    {
+        "CollectionName": "blockedOrganisations",
+        "OfferThroughput": 400
+    }
+]

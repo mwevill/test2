@@ -94,9 +94,6 @@
                     },
                     "containerName": {
                         "value": "[parameters('containerArray')[copyIndex()].containerName]"
-                    },
-                    "pathArray": {
-                        "value": "[parameters('containerArray')[copyIndex()].pathArray]"
                     }
                 }
             },
