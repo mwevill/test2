@@ -111,7 +111,7 @@
             "dependsOn": [
                 "cosmos-db-resources-deployment",
                 "cosmos-db-database-deployment",
-                "[concat('cosmos-db-container-settings-', parameters('containerArray')[copyIndex()].containerName)]"
+                "[concat('cosmos-db-container-', parameters('containerArray')[copyIndex()].containerName)]"
             ],
             "type": "Microsoft.Resources/deployments",
             "condition": "[greater(length(parameters('containerArray')), 0)]",
