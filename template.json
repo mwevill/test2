@@ -61,7 +61,7 @@
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
-                    "cosmosDbName": {
+                    "cosmosDbAccountName": {
                         "value": "[parameters('cosmosDbName')]"
                     },
                     "cosmosDatabase" :{
