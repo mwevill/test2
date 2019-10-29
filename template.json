@@ -118,7 +118,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "https://raw.githubusercontent.com/SkillsFundingAgency/das-platform-building-blocks/mjw/DASD-6863/cosmos-db-container-settings.json",
+                    "uri": "https://raw.githubusercontent.com/SkillsFundingAgency/das-platform-building-blocks/mjw/DASD-6863/templates/cosmos-db-container-settings.json",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
