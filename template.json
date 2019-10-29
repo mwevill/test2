@@ -64,7 +64,7 @@
                     "cosmosDbAccountName": {
                         "value": "[parameters('cosmosDbName')]"
                     },
-                    "cosmosDatabase" :{
+                    "cosmosDatabase": {
                         "value": "[parameters('cosmosDatabase')]"
                     }
                 }
@@ -74,8 +74,8 @@
             "apiVersion": "2017-05-10",
             "name": "[concat('cosmos-db-container-', parameters('containerArray')[copyIndex()].containerName)]",
             "dependsOn": [
-                  "cosmos-db-resources-deployment",
-                  "cosmos-db-database-deployment"
+                "cosmos-db-resources-deployment",
+                "cosmos-db-database-deployment"
             ],
             "type": "Microsoft.Resources/deployments",
             "condition": "[greater(length(parameters('containerArray')), 0)]",
@@ -86,16 +86,16 @@
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
-                     "cosmosDbAccountName": {
+                    "cosmosDbAccountName": {
                         "value": "[parameters('cosmosDbName')]"
                     },
-                    "cosmosDatabase" :{
+                    "cosmosDatabase": {
                         "value": "[parameters('cosmosDatabase')]"
                     },
                     "containerName": {
                         "value": "[parameters('containerArray')[copyIndex()].containerName]"
                     },
-                    "pathArray":  {
+                    "pathArray": {
                         "value": "[parameters('containerArray')[copyIndex()].pathArray]"
                     }
                 }
@@ -109,9 +109,9 @@
             "apiVersion": "2017-05-10",
             "name": "[concat('cosmos-db-container-settings-', parameters('containerArray')[copyIndex()].containerName)]",
             "dependsOn": [
-                  "cosmos-db-resources-deployment",
-                  "cosmos-db-database-deployment",
-                  "[concat('cosmos-db-container-settings-', parameters('containerArray')[copyIndex()].containerName)]"
+                "cosmos-db-resources-deployment",
+                "cosmos-db-database-deployment",
+                "[concat('cosmos-db-container-settings-', parameters('containerArray')[copyIndex()].containerName)]"
             ],
             "type": "Microsoft.Resources/deployments",
             "condition": "[greater(length(parameters('containerArray')), 0)]",
@@ -122,19 +122,23 @@
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
-                     "cosmosDbAccountName": {
+                    "cosmosDbAccountName": {
                         "value": "[parameters('cosmosDbName')]"
                     },
-                    "cosmosDatabase" :{
+                    "cosmosDatabase": {
                         "value": "[parameters('cosmosDatabase')]"
                     },
                     "containerName": {
                         "value": "[parameters('containerArray')[copyIndex()].containerName]"
                     },
-                    "throughput":  {
+                    "throughput": {
                         "value": "[parameters('containerArray')[copyIndex()].throughput]"
                     }
                 }
+            },
+            "copy": {
+                "name": "containercopy",
+                "count": "[length(parameters('containerArray'))]"
             }
         }
     ],
