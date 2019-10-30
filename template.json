@@ -14,6 +14,15 @@
         },
         "containerArray": {
             "type": "array"
+        },
+        "cosmosDb2Name": {
+            "type": "string"
+        },
+        "cosmosDatabase2": {
+            "type": "string"
+        },
+        "containerArray2": {
+            "type": "array"
         }
     },
     "variables": {
@@ -66,6 +75,9 @@
                     },
                     "cosmosDatabase": {
                         "value": "[parameters('cosmosDatabase')]"
+                    },
+                    "cosmosDBType": {
+                        "value": "Sql"
                     }
                 }
             }
@@ -92,11 +104,14 @@
                     "cosmosDatabase": {
                         "value": "[parameters('cosmosDatabase')]"
                     },
+                    "cosmosDBType": {
+                        "value": "Sql"
+                    },
                     "containerName": {
                         "value": "[parameters('containerArray')[copyIndex()].containerName]"
                     },
-                    "partitionKey": {
-                        "value": "[parameters('containerArray')[copyIndex()].partitionKey]"
+                    "pathArray": {
+                        "value": "[parameters('containerArray')[copyIndex()].pathArray]"
                     }
                 }
             },
@@ -128,11 +143,145 @@
                     "cosmosDatabase": {
                         "value": "[parameters('cosmosDatabase')]"
                     },
+                    "cosmosDBType": {
+                        "value": "Sql"
+                    },
                     "containerName": {
                         "value": "[parameters('containerArray')[copyIndex()].containerName]"
                     },
                     "throughput": {
                         "value": "[parameters('containerArray')[copyIndex()].throughput]"
+                    }
+                }
+            },
+            "copy": {
+                "name": "containercopy",
+                "count": "[length(parameters('containerArray'))]"
+            }
+        },
+        {
+            "apiVersion": "2017-05-10",
+            "name": "cosmos-db2-resources-deployment",
+            "dependsOn": [
+            ],
+            "type": "Microsoft.Resources/deployments",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "https://raw.githubusercontent.com/SkillsFundingAgency/das-platform-building-blocks/master/templates/cosmos-db.json",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "cosmosDbName": {
+                        "value": "[parameters('cosmosDb2Name')]"
+                    },
+                    "cosmosDbType": {
+                        "value": "GlobalDocumentDB"
+                    },
+                    "defaultConsistencyLevel": {
+                        "value": "Strong"
+                    },
+                    "ipRangeFilter": {
+                        "value": "[parameters('cosmosDbIpRangeFilter')]"
+                    }
+                }
+            }
+        },
+        {
+            "apiVersion": "2017-05-10",
+            "name": "cosmos-db2-database-deployment",
+            "dependsOn": [
+                "cosmos-db2-resources-deployment"
+            ],
+            "type": "Microsoft.Resources/deployments",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "https://raw.githubusercontent.com/SkillsFundingAgency/das-platform-building-blocks/mjw/DASD-6863/templates/cosmos-db-database.json",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "cosmosDbAccountName": {
+                        "value": "[parameters('cosmosDb2Name')]"
+                    },
+                    "cosmosDatabase": {
+                        "value": "[parameters('cosmosDatabase2')]"
+                    },
+                    "cosmosDBType": {
+                        "value": "Mongo"
+                    }
+                }
+            }
+        },
+        {
+            "apiVersion": "2017-05-10",
+            "name": "[concat('cosmos-db2-container-', parameters('containerArray2')[copyIndex()].containerName)]",
+            "dependsOn": [
+                "cosmos-db2-resources-deployment",
+                "cosmos-db2-database-deployment"
+            ],
+            "type": "Microsoft.Resources/deployments",
+            "condition": "[greater(length(parameters('containerArray2')), 0)]",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "https://raw.githubusercontent.com/SkillsFundingAgency/das-platform-building-blocks/mjw/DASD-6863/templates/cosmos-db-container.json",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "cosmosDbAccountName": {
+                        "value": "[parameters('cosmosDb2Name')]"
+                    },
+                    "cosmosDatabase": {
+                        "value": "[parameters('cosmosDatabase2')]"
+                    },
+                    "cosmosDBType": {
+                        "value": "Mongo"
+                    },
+                    "containerName": {
+                        "value": "[parameters('containerArray2')[copyIndex()].containerName]"
+                    },
+                    "partitionKey": {
+                        "value": "[parameters('containerArray2')[copyIndex()].partitionKey]"
+                    }
+                }
+            },
+            "copy": {
+                "name": "containercopy",
+                "count": "[length(parameters('containerArray2'))]"
+            }
+        },
+        {
+            "apiVersion": "2017-05-10",
+            "name": "[concat('cosmos-db2-container-settings-', parameters('containerArray')[copyIndex()].containerName)]",
+            "dependsOn": [
+                "cosmos-db2-resources-deployment",
+                "cosmos-db2-database-deployment",
+                "[concat('cosmos-db2-container-', parameters('containerArray2')[copyIndex()].containerName)]"
+            ],
+            "type": "Microsoft.Resources/deployments",
+            "condition": "[greater(length(parameters('containerArray2')), 0)]",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "https://raw.githubusercontent.com/SkillsFundingAgency/das-platform-building-blocks/mjw/DASD-6863/templates/cosmos-db-container-settings.json",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "cosmosDbAccountName": {
+                        "value": "[parameters('cosmosDb2Name')]"
+                    },
+                    "cosmosDatabase": {
+                        "value": "[parameters('cosmosDatabase2')]"
+                    },
+                    "cosmosDBType": {
+                        "value": "Mongo"
+                    },
+                    "containerName": {
+                        "value": "[parameters('containerArray2')[copyIndex()].containerName]"
+                    },
+                    "throughput": {
+                        "value": "[parameters('containerArray2')[copyIndex()].throughput]"
                     }
                 }
             },
