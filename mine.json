@@ -2,8 +2,8 @@
 	"Databases": [{
 		"DatabaseName": "__CosmosDatabase__",
 		"Collections": [{
-			"CollectionName": "__CosmosCollectionName__",
-			"OfferThroughput": __ThroughPut__,
+			"containerName": "__CosmoscontainerName__",
+			"throughput": __ThroughPut__,
 			"StoredProcedures": [],
 			"IndexingPolicy": {
 				"indexingMode": "consistent",
@@ -48,55 +48,56 @@
 
 [
     {
-        "CollectionName": "vacancies",
-        "OfferThroughput": 400
+        "containerName": "vacancies",
+        "throughput": 400
     },
     {
-        "CollectionName": "queryStore",
-        "OfferThroughput": 1000
+        "containerName": "queryStore",
+        "throughput": 1000,
+        "PartitionKey": "viewType"
     },
     {
-        "CollectionName": "referenceData",
-        "OfferThroughput": 400
+        "containerName": "referenceData",
+        "throughput": 400
     },
     {
-        "CollectionName": "sequences",
-        "OfferThroughput": 400
+        "containerName": "sequences",
+        "throughput": 400
     },
     {
-        "CollectionName": "users",
-        "OfferThroughput": 400
+        "containerName": "users",
+        "throughput": 400
     },
     {
-        "CollectionName": "applicationReviews",
-        "OfferThroughput": 400
+        "containerName": "applicationReviews",
+        "throughput": 400
     },
     {
-        "CollectionName": "configuration",
-        "OfferThroughput": 400
+        "containerName": "configuration",
+        "throughput": 400
     },
     {
-        "CollectionName": "vacancyReviews",
-        "OfferThroughput": 400
+        "containerName": "vacancyReviews",
+        "throughput": 400
     },
     {
-        "CollectionName": "employerProfiles",
-        "OfferThroughput": 400
+        "containerName": "employerProfiles",
+        "throughput": 400
     },
     {
-        "CollectionName": "reports",
-        "OfferThroughput": 400
+        "containerName": "reports",
+        "throughput": 400
     },
     {
-        "CollectionName": "userNotificationPreferences",
-        "OfferThroughput": 400
+        "containerName": "userNotificationPreferences",
+        "throughput": 400
     },
     {
-        "CollectionName": "communicationMessages",
-        "OfferThroughput": 400
+        "containerName": "communicationMessages",
+        "throughput": 400
     },
     {
-        "CollectionName": "blockedOrganisations",
-        "OfferThroughput": 400
+        "containerName": "blockedOrganisations",
+        "throughput": 400
     }
 ]

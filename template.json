@@ -94,6 +94,9 @@
                     },
                     "containerName": {
                         "value": "[parameters('containerArray')[copyIndex()].containerName]"
+                    },
+                    "partitionKey": {
+                        "value": "[parameters('containerArray')[copyIndex()].partitionKey]"
                     }
                 }
             },
