@@ -49,7 +49,8 @@
 [
     {
         "containerName": "vacancies",
-        "throughput": 400
+        "throughput": 400,
+        "PartitionKey": ""
     },
     {
         "containerName": "queryStore",
@@ -58,46 +59,68 @@
     },
     {
         "containerName": "referenceData",
-        "throughput": 400
+        "throughput": 400,
+        "PartitionKey": ""
     },
     {
         "containerName": "sequences",
-        "throughput": 400
+        "throughput": 400,
+        "PartitionKey": ""
     },
     {
         "containerName": "users",
-        "throughput": 400
+        "throughput": 400,
+        "PartitionKey": ""
     },
     {
         "containerName": "applicationReviews",
-        "throughput": 400
+        "throughput": 400,
+        "PartitionKey": ""
     },
     {
         "containerName": "configuration",
-        "throughput": 400
+        "throughput": 400,
+        "PartitionKey": ""
     },
     {
         "containerName": "vacancyReviews",
-        "throughput": 400
+        "throughput": 400,
+        "PartitionKey": ""
     },
     {
         "containerName": "employerProfiles",
-        "throughput": 400
+        "throughput": 400,
+        "PartitionKey": ""
     },
     {
         "containerName": "reports",
-        "throughput": 400
+        "throughput": 400,
+        "PartitionKey": ""
     },
     {
         "containerName": "userNotificationPreferences",
-        "throughput": 400
+        "throughput": 400,
+        "PartitionKey": ""
     },
     {
         "containerName": "communicationMessages",
-        "throughput": 400
+        "throughput": 400,
+        "PartitionKey": ""
     },
     {
         "containerName": "blockedOrganisations",
-        "throughput": 400
+        "throughput": 400,
+        "PartitionKey": ""
     }
 ]
+
+
+
+
+
+
+[{ "containerName": "activities", "throughput": 400, PathArray: [{"path": "/*", "indexes": [{"kind": "Range","dataType": "Number","precision": -1},{"kind": "Hash","dataType": "String","precision": 3}]},{"path": "/messageId/?","indexes": [{"kind": "Range","dataType": "String","precision": 40},{"kind": "Range","dataType": "Number","precision": -1}]} }]]
+
+
+
+[{ "containerName": "activities", "throughput": 400, "PathArray": [{"path": "/*", "indexes": [{"kind": "Range","dataType": "Number","precision": -1},{"kind": "Hash","dataType": "String","precision": 3}]},{"path": "/messageId/?","indexes": [{"kind": "Range","dataType": "String","precision": 40},{"kind": "Range","dataType": "Number","precision": -1}]}]}]

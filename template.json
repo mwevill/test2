@@ -253,7 +253,7 @@
         },
         {
             "apiVersion": "2017-05-10",
-            "name": "[concat('cosmos-db2-container-settings-', parameters('containerArray')[copyIndex()].containerName)]",
+            "name": "[concat('cosmos-db2-container-settings-', parameters('containerArray2')[copyIndex()].containerName)]",
             "dependsOn": [
                 "cosmos-db2-resources-deployment",
                 "cosmos-db2-database-deployment",
