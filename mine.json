@@ -123,4 +123,8 @@
 
 
 
+
+
+{ "id": "/subscriptions/68208b91-0105-498e-a1bc-40d75596c01a/resourceGroups/das-at-acti-rg/providers/Microsoft.Resources/deployments/template-20191101-121854-ba8f/operations/AAE0DAA41EB62348", "operationId": "AAE0DAA41EB62348", "properties": { "provisioningOperation": "Create", "provisioningState": "Failed", "timestamp": "2019-11-01T12:20:54.600126Z", "duration": "PT0.2577612S", "trackingId": "78748b1e-0cb8-4a72-bfcb-a7ee81431abe", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidTemplate", "message": "Deployment template parse failed: 'Required property 'name' not found in JSON. Path 'resources[0]', line 37, position 5.'.", "additionalInfo": [ { "type": "TemplateViolation", "info": { "lineNumber": 0, "linePosition": 0, "path": "" } } ] } }, "targetResource": { "id": "/subscriptions/68208b91-0105-498e-a1bc-40d75596c01a/resourceGroups/das-at-acti-rg/providers/Microsoft.Resources/deployments/cosmos-db-container-settings-activities", "resourceType": "Microsoft.Resources/deployments", "resourceName": "cosmos-db-container-settings-activities" } }}
+
 [{ "containerName": "activities", "throughput": 400, "PathArray": [{"path": "/*", "indexes": [{"kind": "Range","dataType": "Number","precision": -1},{"kind": "Hash","dataType": "String","precision": 3}]},{"path": "/messageId/?","indexes": [{"kind": "Range","dataType": "String","precision": 40},{"kind": "Range","dataType": "Number","precision": -1}]}]}]
