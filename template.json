@@ -55,14 +55,6 @@
         "aseHostingEnvironmentName": {
             "type": "string",
             "defaultValue": ""
-        },
-        "registryName" :{
-            "type": "string",
-            "defaultValue": ""
-        },
-        "registryPassword":{
-            "type": "securestring",
-            "defaultValue": ""
         }
     },
     "variables": {
