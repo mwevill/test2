@@ -190,15 +190,15 @@
                             },
                             {
                                 "name": "DOCKER_REGISTRY_SERVER_URL",
-                                "value": "https://index.docker.io/v1/"
+                                "value": "https://index.docker.io/"
                             },
                             {
                                 "name": "DOCKER_REGISTRY_SERVER_USERNAME",
-                                "value": "[parameters('registryName')]"
+                                "value": ""
                             },
                             {
                                 "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
-                                "value": "[parameters('registryPassword')]"
+                                "value": ""
                             }
                         ]
                     },
