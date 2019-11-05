@@ -101,8 +101,8 @@
                     "aseResourceGroup": {
                         "value": "[parameters('aseResourceGroup')]"
                     },
-                    "kind": {
-                        "appServicePlanOS": "Linux"
+                    "appServicePlanOS": {
+                        "value": "Linux"
                     }
                 }
             }
