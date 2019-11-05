@@ -190,7 +190,7 @@
                             },
                             {
                                 "name": "DOCKER_REGISTRY_SERVER_URL",
-                                "value": "[concat('https://', parameters('registryName'), '.azurecr.io')]"
+                                "value": "https://index.docker.io/v1/"
                             },
                             {
                                 "name": "DOCKER_REGISTRY_SERVER_USERNAME",
