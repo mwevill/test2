@@ -191,6 +191,10 @@
                             {
                                 "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
                                 "value": ""
+                            },
+                            {
+                                "name": "DOCKER_CUSTOM_IMAGE_NAME",
+                                "value": "apprenticeshipsdevops/das-qna-config:257181"
                             }
                         ]
                     },
