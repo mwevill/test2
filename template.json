@@ -163,7 +163,9 @@
                     "ipSecurityRestrictions": {
                         "value": "[parameters('appServiceAllowedIPs')]"
                     },
-                    "appKind": "app,linux,container",
+                    "appKind": {
+                        "value": "app,linux,container"
+                    },
                     "appServiceAppSettings": {
                         "value": [
                             {
