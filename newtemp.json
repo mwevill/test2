@@ -23,7 +23,7 @@
         "environmentName": {
             "type": "string"
         },
-        "resourceEnvironmentName2": {
+        "resourceEnvironmentName": {
             "type": "string"
         },
         "loggingRedisConnectionString": {
