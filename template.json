@@ -56,6 +56,9 @@
         "aseHostingEnvironmentName": {
             "type": "string",
             "defaultValue": ""
+        },
+        "linuxFxVersion": {
+            "type": "String"
         }
     },
     "variables": {
@@ -160,7 +163,7 @@
                             "value": "false"
                         }
                     ],
-                    "linuxFxVersion": "DOCKER|apprenticeshipsdevops/das-qna-config:latest",
+                    "linuxFxVersion":  "[parameters('linuxFxVersion')]",
                     "appCommandLine": "",
                     "alwaysOn": false
                 },
