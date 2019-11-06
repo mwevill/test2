@@ -62,7 +62,9 @@
         "deploymentUrlBase": "https://raw.githubusercontent.com/SkillsFundingAgency/das-platform-building-blocks/mjw/DASD-6989/templates/",
         "resourceNamePrefix": "[toLower(concat('mjw-', parameters('resourceEnvironmentName'),'-', parameters('serviceName')))]",
         "appServiceName": "[concat(variables('resourceNamePrefix'), '-as')]",
-        "appServicePlanName": "[concat(variables('resourceNamePrefix'), '-asp')]"
+        "appServicePlanName": "[concat(variables('resourceNamePrefix'), '-asp')]",
+        "resourceGroup": "[resourceGroup().name]",
+        "appServicePlanId": "[resourceId(variables('resourceGroup'), 'Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
     },
     "resources": [
         {
@@ -133,12 +135,12 @@
         {
             "type": "Microsoft.Web/sites",
             "apiVersion": "2018-11-01",
-            "name": "[parameters('name')]",
+            "name": "[variables('appServiceName')]",
             "location": "[parameters('location')]",
             "dependsOn": [],
             "tags": {},
             "properties": {
-                "name": "[variables()('appServiceName')]",
+                "name": "[variables('appServiceName')]",
                 "siteConfig": {
                     "appSettings": [
                         {
@@ -162,8 +164,8 @@
                     "appCommandLine": "",
                     "alwaysOn": false
                 },
-                "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
-                "hostingEnvironment": "[parameters('hostingEnvironment')]",
+                "serverFarmId": "[variables('appServicePlanId')]",
+                "hostingEnvironment": "",
                 "clientAffinityEnabled": false
             }
         },
