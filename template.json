@@ -158,6 +158,9 @@
                     "appKind": {
                         "value": "app,linux,container"
                     },
+                    "dockerImageName":{
+                        "value": "apprenticeshipsdevops/das-qna-config:257181"
+                    },
                     "appServiceAppSettings": {
                         "value": [
                             {
